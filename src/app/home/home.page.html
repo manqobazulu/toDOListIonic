@@ -1,0 +1,67 @@
+<ion-content [fullscreen]="true">
+
+  <div id="top-div">
+    <h1>Shopping List</h1>
+  </div>
+
+  <div id="bottom-div">
+
+    <ion-list *ngFor="let item of toDoList">
+
+      <ion-item-sliding>
+        <ion-item-options side="start">
+          <ion-item-option (click)="favorite(item)">Edit</ion-item-option>
+          <ion-item-option color="danger" (click)="share(item)">Share</ion-item-option>
+        </ion-item-options>
+
+        <ion-item>
+
+          
+          <ion-label>
+            <h2>{{ item.name }}</h2>
+            <p>{{ item.number }}</p>
+          </ion-label>
+          
+          <ion-avatar slot="start">
+            
+            <img  src="https://images.pexels.com/photos/54369/pexels-photo-54369.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"/>
+            
+          </ion-avatar>
+        </ion-item>
+
+
+        <ion-item-options side="end">
+          <ion-item-option (click)="delTodo(key)">Delete</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+      <!-- <ion-item>
+      <ion-label>{{ item.name }}</ion-label>
+    </ion-item> -->
+
+    </ion-list>
+
+  </div>
+
+
+
+  <ion-fab vertical="top" horizontal="end" slot="fixed" (click)="presentAddTodoModal()">
+    <ion-fab-button>
+      <ion-icon name="remove"></ion-icon>
+      
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+<script>
+var openFile = function(event) {
+  var input = event.target;
+
+  var reader = new FileReader();
+  reader.onload = function(){
+    var dataURL = reader.result;
+    var output = document.getElementById('output');
+    output.src = dataURL;
+  };
+  reader.readAsDataURL(input.files[0]);
+};
+</script>
